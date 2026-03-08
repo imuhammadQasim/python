@@ -83,7 +83,7 @@ import cv2 as cv
 
 import cv2
 
-img = cv2.imread('image.jpeg')
+img = cv2.imread('Resized.jpg')
 # resized = cv2.resize(img, (int(img.shape[1]/3), int(img.shape[0]/3)))
 # horizontal = cv2.flip(resized, 1)
 # vertical = cv2.flip(resized, 0)
@@ -104,12 +104,79 @@ img = cv2.imread('image.jpeg')
 # cv2.destroyAllWindows()
 
 
-row, col = img.shape[:2]
-center = (row/2,col/2)
-M= cv2.getRotationMatrix2D(center, 30,1)
+# row, col = img.shape[:2]
+# center = (row/2,col/2)
+# M= cv2.getRotationMatrix2D(center, 30,1)
 
-resize = cv2.resize(img, (int(img.shape[0]/2), int(img.shape[1]/2)))
-rotated = cv2.warpAffine(resize, M, (col, row))
-cv2.imshow("Rotated", rotated)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# resize = cv2.resize(img, (int(img.shape[0]/2), int(img.shape[1]/2)))
+# rotated = cv2.warpAffine(resize, M, (col, row))
+# cv2.imshow("Rotated", rotated)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
+# resized = cv2.resize(img, (int(img.shape[1]/2), int(img.shape[0]/2)))
+# edges = cv.Canny(resized, 200,200)
+
+# imgray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+# ret, thresh = cv.threshold(imgray, 127, 255, 0)
+# im2, contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+
+
+# img = cv.imread('Resized.jpg', cv.IMREAD_GRAYSCALE)
+# assert img is not None, "file could not be read, check with os.path.exists()"
+# rows,cols = img.shape
+ 
+# M = np.float32([[1,0,100],[0,1,250]])
+# dst = cv.warpAffine(img,M,(cols,rows))
+ 
+# cv.imshow('img',dst)
+# cv.waitKey(0)
+# cv.destroyAllWindows()
+
+# import cv2 as cv
+# import numpy as np
+
+# img = cv.imread("Resized.jpg")
+
+# if img is None:
+#     print("Image not found")
+#     exit()
+
+# hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
+# lower_red = np.array([0,120,70])
+# upper_red = np.array([10,255,255])
+# mask = cv.inRange(hsv, lower_red, upper_red)
+# contours, _ = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+
+# for cnt in contours:
+
+#     area = cv.contourArea(cnt)
+
+#     if area > 500:
+
+#         x, y, w, h = cv.boundingRect(cnt)
+
+#         cv.rectangle(img, (x,y), (x+w, y+h), (0,255,0), 2)
+#         M = cv.moments(cnt)
+
+#         if M["m00"] != 0:
+#             cx = int(M["m10"]/M["m00"])
+#             cy = int(M["m01"]/M["m00"])
+
+#             cv.circle(img,(cx,cy),5,(255,0,0),-1)
+
+
+# cv.imshow("Original", img)
+# cv.imshow("Mask", mask)
+
+# cv.waitKey(0)
+# cv.destroyAllWindows()
+
+
+import cv2
+import matplotlib.pyplot as plt
+
+img = cv2.imread("Resized.jpg")
+
+plt.imshow(img)
+plt.show()
