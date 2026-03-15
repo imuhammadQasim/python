@@ -360,3 +360,19 @@
 # d = Dog()
 
 # d.sound()
+
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def __str__(self):
+        return f"{self.brand} {self.model}"  # For users
+
+    def __repr__(self):
+        return f"Car('{self.brand}', '{self.model}')"  # For developers
+
+car = Car("Audi", "R8")
+
+print(car)       # Calls __str__
+print(repr(car)) # Calls __repr__
