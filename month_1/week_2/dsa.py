@@ -164,47 +164,103 @@
 
 # arr = [1,2,3,4,5,6,7,8]
 
-def binarySearch(arr, target):
-    h = len(arr)-1
-    l = 0
-    for i in range(len(arr)):
-        mid = (l+h)//2
-        if(target == arr[mid]):
-            return mid
-        if(target > arr[mid]):
-            l= mid+1
-        else:
-            h= mid-1
-    return " Not found"
+# def binarySearch(arr, target):
+#     h = len(arr)-1
+#     l = 0
+#     for i in range(len(arr)):
+#         mid = (l+h)//2
+#         if(target == arr[mid]):
+#             return mid
+#         if(target > arr[mid]):
+#             l= mid+1
+#         else:
+#             h= mid-1
+#     return " Not found"
 
 
-# print(binarySearch(arr, 7))
+# # print(binarySearch(arr, 7))
 
 
-left = [1,3,5,7]
-right = [2,4,6,8]
+# left = [1,3,5,7]
+# right = [2,4,6,8]
 
-def mergeSort(arr1, arr2):
-    i = 0 
-    j = 0 
-    result = []
+# def mergeSort(arr1, arr2):
+#     i = 0 
+#     j = 0 
+#     result = []
 
-    while(i < len(arr1) and j < len(arr2)):
-        if arr1[i] < arr2[j]:
-            result.append(arr1[i])
-            i+=1
-        else:
-            result.append(arr2[j])
-            j+=1
+#     while(i < len(arr1) and j < len(arr2)):
+#         if arr1[i] < arr2[j]:
+#             result.append(arr1[i])
+#             i+=1
+#         else:
+#             result.append(arr2[j])
+#             j+=1
     
-    while(i < len(arr1)):
-        result.append(arr1[i])
-        i +=1
-    while(j < len(arr2)):
-        result.append(arr2[j])
-        j +=1
+#     while(i < len(arr1)):
+#         result.append(arr1[i])
+#         i +=1
+#     while(j < len(arr2)):
+#         result.append(arr2[j])
+#         j +=1
 
-    return binarySearch(result, 7)
+#     return binarySearch(result, 7)
 
 
-print(mergeSort(left, right))
+# print(mergeSort(left, right))
+
+
+# arr = [1,3,5,7,0]
+
+# result = []
+# i =0
+# j = len(arr)-1
+
+# while i <=j:
+#     result.append(arr[i])
+#     i+=1
+
+#     if i<=j:
+#         result.append(arr[j])
+#         j-=1
+
+
+# print(result)
+
+
+
+
+# i = 0
+# j = len(s)-1
+# is_palindrome= True  
+# print(s[i])
+# while i<=j:
+#     if s[i] != s[j]:
+#         is_palindrome = False
+    
+#     i+=1
+#     j-=1
+
+# if is_palindrome:
+#     print("The string is palindorme")
+# else:
+#     print("The string is not palindorme")
+
+
+s = "reviver"
+
+mid = len(s)//2
+l = mid -1
+h = mid +1
+is_palindrom = True
+
+while l >=0 and h<len(s):
+    if s[l] != s[h]:
+        is_palindrom = False
+    l-=1
+    h+=1
+
+if is_palindrom:
+    print("The string is palindorme")
+else:
+    print("The string is not palindorme")
