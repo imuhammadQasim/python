@@ -247,20 +247,60 @@
 #     print("The string is not palindorme")
 
 
-s = "reviver"
+# s = "reviver"
 
-mid = len(s)//2
-l = mid -1
-h = mid +1
-is_palindrom = True
+# mid = len(s)//2
+# l = mid -1
+# h = mid +1
+# is_palindrom = True
 
-while l >=0 and h<len(s):
-    if s[l] != s[h]:
-        is_palindrom = False
-    l-=1
-    h+=1
+# while l >=0 and h<len(s):
+#     if s[l] != s[h]:
+#         is_palindrom = False
+#     l-=1
+#     h+=1
 
-if is_palindrom:
-    print("The string is palindorme")
-else:
-    print("The string is not palindorme")
+# if is_palindrom:
+#     print("The string is palindorme")
+# else:
+#     print("The string is not palindorme")
+
+# def quick_sort(arr):
+#     if len(arr) <= 1:
+#         return arr
+
+#     pivot = arr[-1]  # last element as pivot
+#     left = []
+#     right = []
+
+#     for i in range(len(arr) - 1):
+#         if arr[i] <= pivot:
+#             left.append(arr[i])
+#         else:
+#             right.append(arr[i])
+
+#     return quick_sort(left) + [pivot] + quick_sort(right)
+
+
+# # Test
+# arr = [8, 3, 1, 7, 0, 10, 2]
+# sorted_arr = quick_sort(arr)
+# print(sorted_arr)
+
+
+def partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+
+# Test
+arr = [8, 3, 1, 7, 0, 10, 2]
+print(partition(arr, 1, len(arr)))
