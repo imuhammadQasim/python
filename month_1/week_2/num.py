@@ -65,11 +65,17 @@ import numpy as np
 import numpy as np
 
 # 1. Five random numbers between 0 and 1
-uniform_data = np.random.rand(1)
-# 2. A 3x3 matrix of "Normal" numbers (Bell curve)
-# Most numbers will be near 0; few will be above 2 or below -2
-normal_data = np.random.randn(1000)
+# uniform_data = np.random.rand(1)
+# # 2. A 3x3 matrix of "Normal" numbers (Bell curve)
+# # Most numbers will be near 0; few will be above 2 or below -2
+# normal_data = np.random.randn(1000)
 
-# 3. Simulating a dice roll (10 rolls)
-dice_rolls = np.random.randint(1, 7, size=10)
-print(normal_data)
+# # 3. Simulating a dice roll (10 rolls)
+# dice_rolls = np.random.randint(1, 7, size=10)
+# print(normal_data)
+
+np.random.seed(42)
+print(np.random.rand(3))
+
+np.random.seed(42)
+print(np.random.rand(3))
