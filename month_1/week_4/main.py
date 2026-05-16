@@ -286,3 +286,38 @@
 # result = [x * y for x in range(10) for y in range(10) if x % 2 == 0 and y % 3 == 0]
 # print(result)
 
+
+# def two_sum(nums , target):
+#     my_dict = {}
+#     for i in range(len(nums)):
+#         complement = target - nums[i]
+#         if complement in my_dict:
+#             return [my_dict[complement] , i]
+        
+#         my_dict[nums[i]] = i
+#         print(my_dict)
+#     return "n/a"
+
+# num = [2, 1, 7, 11, 15];
+# target = 9;
+# print(two_sum(num , target))
+
+
+l = [7, 1, 5, 3, 6, 4]
+
+def bestBuySellStock(arr):
+    minPrice = float('inf')
+    maxProfit = 0
+    
+    for i in range(len(arr)):
+        if arr[i] < minPrice:
+            minPrice = arr[i]
+        else:
+            profit = arr[i] - minPrice
+            if maxProfit < profit:
+                maxProfit = profit
+        
+
+    return {"minPrice": minPrice, "maxProfit":maxProfit}
+
+print(bestBuySellStock(l))
