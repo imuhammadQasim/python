@@ -158,35 +158,227 @@
 // }
 
 // fun(3);
+// let a = [1, 2, 3, 4]; // Length: 4 (Longer)
+// let b = [9, 10];
+// function merge(a, b) {
+//   let left = 0;
+//   let right = 0;
+//   let result = [];
 
-let a = [1, 4, 6, 7];
-let b = [2, 3, 5, 9, 10];
+//   while (left < a.length && right < b.length) {
+//     if (a[left] > b[right]) {
+//       result.push(b[right]);
+//       right++;
+//     } else {
+//       result.push(a[left]);
+//       left++;
+//     }
+//   }
 
-function merge(a, b) {
-  let left = 0;
-  let right = 0;
-  let result = [];
+//   while (left < a.length) {
+//     result.push(a[left]);
+//     left++;
+//   }
+//   while (right < b.length) {
+//     result.push(b[right]);
+//     right++;
+//   }
 
-  while (left < a.length && right < b.length) {
-    if (a[left] > b[right]) {
-      result.push(b[right]);
-      right++;
-    } else {
-      result.push(a[left]);
-      left++;
-    }
+//   return result;
+// }
+
+// function mergeSort(arr) {
+//   if (arr.length <= 1) {
+//     return arr;
+//   }
+
+//   let mid = Math.floor(arr.length / 2);
+
+//   let leftHalf = arr.slice(0, mid);
+//   let rightHalf = arr.slice(mid);
+
+//   return merge(mergeSort(leftHalf), mergeSort(rightHalf));
+// }
+
+// let unsortedArray = [34, 7, 23, 32, 5, 62];
+// console.log(mergeSort(unsortedArray));
+
+// class Box {
+//   constructor(toy) {
+//     this.toy = toy; // The item inside the box
+//     this.next = null; // The note pointing to the next box (starts blank)
+//   }
+// }
+
+// // Let's create three separate boxes
+// let boxA = new Box("Teddy Bear");
+// let boxB = new Box("Toy Car");
+// let boxC = new Box("Robot");
+// boxA.next = boxB;
+// boxB.next = boxC;
+
+// let head = boxA;
+// console.log(head);
+// let currentBox = head;
+// while (currentBox !== null) {
+//   console.log("Found: " + currentBox.toy);
+
+//   currentBox = currentBox.next;
+// }
+
+// class Node {
+//   constructor(data) {
+//     this.data = data;
+//     this.next = null;
+//   }
+// }
+
+// class LinkededList {
+//   constructor() {
+//     this.head = null;
+//   }
+
+//   append(data) {
+//     const newNode = new Node(data);
+//     if (this.head === null) {
+//       this.head = newNode;
+//       return;
+//     }
+
+//     let current = this.head;
+//     while (current.next !== null) {
+//       current = current.next;
+//     }
+//     current.next = newNode;
+//   }
+
+//   printList() {
+//     let current = this.head;
+
+//     let result = "";
+//     while (current !== null) {
+//       result += current.data + " => ";
+//       current = current.next;
+//     }
+//     console.log(result + "null ");
+//   }
+// }
+
+// const myList = new LinkededList();
+
+// myList.append(10);
+// myList.append(20);
+// myList.append(40);
+// myList.printList();
+
+// class Node {
+//   constructor(data) {
+//     this.data = data;
+//     this.next = null;
+//   }
+// }
+// class LinkedList {
+//   constructor() {
+//     this.head = null;
+//   }
+
+//   append(data) {
+//     const newNode = new Node(data);
+//     if (this.head === null) {
+//       this.head = newNode;
+//       return;
+//     }
+
+//     let current = this.head;
+//     while (current.next !== null) {
+//       current = current.next;
+//     }
+
+//     current.next = newNode;
+//     // console.log(this.head);
+//   }
+
+//   printList() {
+//     let current = this.head;
+//     let result = "";
+//     while (current !== null) {
+//       result += current.data + " => ";
+//       current = current.next;
+//     }
+//     console.log(result + "null ");
+//   }
+// }
+
+// const myList = new LinkedList();
+
+// myList.append(10);
+// myList.append(20);
+// myList.append(30);
+// myList.append(40);
+// myList.printList();
+
+// 1. The Bidirectional Building Block
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null; // Points to the next node
+    this.prev = null; // Points to the previous node 👈 NEW
   }
-
-  while (left < a.length) {
-    result.push(a[left]);
-    left++;
-  }
-  while (right < b.length) {
-    result.push(b[right]);
-    right++;
-  }
-
-  return result;
 }
 
-console.log(merge(a, b));
+// 2. The Management Wrapper
+class DoublyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null; // Tracks the end for easy reverse traversal 👈 NEW
+  }
+
+  // Add a node to the end
+  append(data) {
+    const newNode = new Node(data);
+
+    // Case 1: The list is empty
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode; // Head and Tail are the same node
+      return;
+    }
+
+    // Case 2: The list has items
+    // No while loop needed! We can jump straight to the tail.
+    this.tail.next = newNode; // Old tail points forward to new node
+    newNode.prev = this.tail; // New node points backward to old tail 👈 NEW
+    this.tail = newNode; // Move the tail marker to the new node
+  }
+
+  // Print forward from Head to Tail
+  printForward() {
+    let current = this.head;
+    let result = "Forward: ";
+    while (current !== null) {
+      result += current.data + " <-> ";
+      current = current.next;
+    }
+    console.log(result + "null");
+  }
+
+  // Print backward from Tail to Head 👈 NEW
+  printBackward() {
+    let current = this.tail; // Start at the end
+    let result = "Backward: null";
+    while (current !== null) {
+      result = result + " <-> " + current.data; // Build string backwards
+      current = current.prev; // Move backward using prev pointer
+    }
+    console.log(result);
+  }
+}
+
+// --- Usage ---
+const myDLL = new DoublyLinkedList();
+myDLL.append(10);
+myDLL.append(20);
+myDLL.append(30);
+
+myDLL.printForward(); // Output: Forward: 10 <-> 20 <-> 30 <-> null
+myDLL.printBackward(); // Output: Backward: null <-> 10 <-> 20 <-> 30
