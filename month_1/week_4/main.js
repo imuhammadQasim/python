@@ -318,67 +318,87 @@
 // myList.printList();
 
 // 1. The Bidirectional Building Block
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null; // Points to the next node
-    this.prev = null; // Points to the previous node 👈 NEW
+// class Node {
+//   constructor(data) {
+//     this.data = data;
+//     this.next = null; // Points to the next node
+//     this.prev = null; // Points to the previous node 👈 NEW
+//   }
+// }
+
+// // 2. The Management Wrapper
+// class DoublyLinkedList {
+//   constructor() {
+//     this.head = null;
+//     this.tail = null; // Tracks the end for easy reverse traversal 👈 NEW
+//   }
+
+//   // Add a node to the end
+//   append(data) {
+//     const newNode = new Node(data);
+
+//     // Case 1: The list is empty
+//     if (this.head === null) {
+//       this.head = newNode;
+//       this.tail = newNode; // Head and Tail are the same node
+//       return;
+//     }
+
+//     // Case 2: The list has items
+//     // No while loop needed! We can jump straight to the tail.
+//     this.tail.next = newNode; // Old tail points forward to new node
+//     newNode.prev = this.tail; // New node points backward to old tail 👈 NEW
+//     this.tail = newNode; // Move the tail marker to the new node
+//   }
+
+//   // Print forward from Head to Tail
+//   printForward() {
+//     let current = this.head;
+//     let result = "Forward: ";
+//     while (current !== null) {
+//       result += current.data + " <-> ";
+//       current = current.next;
+//     }
+//     console.log(result + "null");
+//   }
+
+//   // Print backward from Tail to Head 👈 NEW
+//   printBackward() {
+//     let current = this.tail; // Start at the end
+//     let result = "Backward: null";
+//     while (current !== null) {
+//       result = result + " <-> " + current.data; // Build string backwards
+//       current = current.prev; // Move backward using prev pointer
+//     }
+//     console.log(result);
+//   }
+// }
+
+// // --- Usage ---
+// const myDLL = new DoublyLinkedList();
+// myDLL.append(10);
+// myDLL.append(20);
+// myDLL.append(30);
+
+// myDLL.printForward(); // Output: Forward: 10 <-> 20 <-> 30 <-> null
+// myDLL.printBackward(); // Output: Backward: null <-> 10 <-> 20 <-> 30
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+let k = 3;
+
+function listed(arr, k) {
+  let maxSum = Infinity;
+  for (let i = 0; i < arr.length - k + 1; i++) {
+    let sum = 0;
+    for (let j = i; j < k + i; j++) {
+      sum += arr[j];
+    }
+    console.log(`maxSum in ${i} iteration is ${maxSum}`);
+    if (sum < maxSum) {
+      maxSum = sum;
+    }
   }
+  console.log(maxSum);
 }
 
-// 2. The Management Wrapper
-class DoublyLinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null; // Tracks the end for easy reverse traversal 👈 NEW
-  }
-
-  // Add a node to the end
-  append(data) {
-    const newNode = new Node(data);
-
-    // Case 1: The list is empty
-    if (this.head === null) {
-      this.head = newNode;
-      this.tail = newNode; // Head and Tail are the same node
-      return;
-    }
-
-    // Case 2: The list has items
-    // No while loop needed! We can jump straight to the tail.
-    this.tail.next = newNode; // Old tail points forward to new node
-    newNode.prev = this.tail; // New node points backward to old tail 👈 NEW
-    this.tail = newNode; // Move the tail marker to the new node
-  }
-
-  // Print forward from Head to Tail
-  printForward() {
-    let current = this.head;
-    let result = "Forward: ";
-    while (current !== null) {
-      result += current.data + " <-> ";
-      current = current.next;
-    }
-    console.log(result + "null");
-  }
-
-  // Print backward from Tail to Head 👈 NEW
-  printBackward() {
-    let current = this.tail; // Start at the end
-    let result = "Backward: null";
-    while (current !== null) {
-      result = result + " <-> " + current.data; // Build string backwards
-      current = current.prev; // Move backward using prev pointer
-    }
-    console.log(result);
-  }
-}
-
-// --- Usage ---
-const myDLL = new DoublyLinkedList();
-myDLL.append(10);
-myDLL.append(20);
-myDLL.append(30);
-
-myDLL.printForward(); // Output: Forward: 10 <-> 20 <-> 30 <-> null
-myDLL.printBackward(); // Output: Backward: null <-> 10 <-> 20 <-> 30
+listed(arr, k);
