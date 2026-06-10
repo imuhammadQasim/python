@@ -146,22 +146,76 @@
 # print(u.age)
 
 
-class User:
-    def __init__(self, age):
-        self._age = age
+# class User:
+#     def __init__(self, age):
+#         self._age = age
 
-    def get_age(self):
-        return self._age
+#     def get_age(self):
+#         return self._age
 
-    def set_age(self, value):
-        if value < 0:
-            raise ValueError("Age cannot be negative")
-        self._age = value
+#     def set_age(self, value):
+#         if value < 0:
+#             raise ValueError("Age cannot be negative")
+#         self._age = value
         
         
         
-u = User(25)
+# u = User(25)
 
-u.set_age(30)
+# u.set_age(30)
 
-print(u.get_age())
+# print(u.get_age())
+
+# a = [1,2,3]
+# b = [4,5,6]
+
+# c = []
+# for i in range(len(a)):
+#     c.append(a[i] + b[i])
+
+# print(c)
+
+
+# import numpy as np
+
+# a = np.array([1,2,3])
+# b = np.array([4,5,6])
+
+# c = a + b
+
+# print(c)
+
+import numpy as np
+# X = np.array([
+#     [23, 180],
+#     [30, 170],
+#     [45, 165]
+# ])
+# arr = np.array([
+#  [[1,2],[3,4]],
+#  [[5,6],[7,8]]
+# ], dtype=np.int32)
+
+
+# arr = np.zeros((3,4), dtype=np.int32)
+# arr = np.full((2,2), 99)
+# arr = np.arange(0,10,2)
+# arr = np.linspace(0,1,10)
+
+# arr = np.array([ [1,2,3],
+#  [4,5,6],
+#  [7,8,9]])
+# print(arr)
+
+
+
+# arr = np.array([1,2,3])
+# print(arr+10)
+
+
+# X = np.array([
+#     [23,180,75],
+#     [35,175,80],
+#     [28,165,60]
+# ])
+# print(X[:,0])
